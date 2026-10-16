@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package customer;
+
+service CustomerService {
+  rpc CreateCustomer (CreateCustomerRequest) returns (CustomerResponse);
+  rpc GetCustomer (GetCustomerRequest) returns (CustomerResponse);
+  rpc GetMembershipScore (GetCustomerRequest) returns (MembershipResponse);
+  rpc UpdateCustomer (UpdateCustomerRequest) returns (CustomerResponse);
+}
+
+message CreateCustomerRequest {
+  int32 uid = 1;
+  string fullname = 2;
+}
+
+message GetCustomerRequest {
+  int32 uid = 1;
+}
+
+message CustomerResponse {
+  int32 uid = 1;
+  string fullname = 2;
+  int32 mid = 3;
+  string mname = 4;
+  int32 score = 5;
+}
+
+message MembershipResponse {
+  int32 mid = 1;
+  string mname = 2;
+  int32 score = 3;
+}
+
+message UpdateCustomerRequest {
+  int32 uid = 1;
+  string fullname = 2;
+}
